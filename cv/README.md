@@ -2,9 +2,11 @@
 
 We might start with collecting a solid base of QC metriccs and how to describe them, then define CV entries from these definitions and draft examplary qcML elements (value and graphical representations to better understand the metric's expressiveness)
 
+You can find a collection of metrics from different source [here as summary](qc-metric-collection.md), [as more detailed spreadsheet](qc-metric-collection.xlsx), or [as html version of the spreadsheet](qc-metric-collection.html)
+
 ***Note that this is free-form so your creative ideas are not hindered, but ultimatively a common structure would be desired.*** 
 
-The structure is as follows:
+A structure might be as follows:
 
 1.  a file containing the collection of metrics
     *  a metric ready to cast into an cv entry should define a
