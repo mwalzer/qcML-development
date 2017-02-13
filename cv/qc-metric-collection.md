@@ -38,23 +38,23 @@ The more elaborate collection is found in the spreadsheet with the same name ([l
 *	C-3A
 	* ```Peak width at half-height for IDs	Median value```
 	* Def.:	Sharper peak widths indicate better chromatographic resolution	Median peak widths for all identified unique peptides (s)
-	* Ex.:	Inobtainable with pickedpeak data
+	* Ex.:	TODO feature mapping
 *	C-3B
 	* ```Peak width at half-height for IDs	Interquartile distance```
 	* Def.:	Tighter distributions indicate more peak width uniformity	Measure of the distribution of the peak widths; small values indicate consistency
-	* Ex.:	Inobtainable with pickedpeak data
+	* Ex.:	TODO feature mapping
 *	C-4A
 	* ```Peak widths at half-max over RT deciles for IDs	First decile```
 	* Def.:	Estimates peak widths at the beginning of the gradient	Median peak width for identified peptides in first RT decile (early)
-	* Ex.:	Inobtainable with pickedpeak data
+	* Ex.:	TODO feature mapping
 *	C-4B
 	* ```Peak widths at half-max over RT deciles for IDs	Last decile```
 	* Def.:	Estimates peak widths at the end of the gradient	Median peak width for identified peptides in first RT decile (end)
-	* Ex.:	Inobtainable with pickedpeak data
+	* Ex.:	TODO feature mapping
 *	C-4C
 	* ```Peak widths at half-max over RT deciles for IDs	Median decile```
 	* Def.:	Estimates peak widths at the middle of the gradient	Median peak width for identified peptides in first RT decile (middle)
-	* Ex.:	Inobtainable with pickedpeak data
+	* Ex.:	TODO feature mapping
 *	C-6A
 	* ```Peptide elution order	max diff in first N(a, b)/10 peptides```
 	* Def.:	Fraction of extra early (hydrophilic) eluters	Peptide elution order can be used to measure elution differences early (hydrophilic) and late (hydrophobic) in the chromatographic gradient.
@@ -63,27 +63,27 @@ The more elaborate collection is found in the spreadsheet with the same name ([l
 	* ```Peptide elution order	max diff in last N(a, b)/10 peptides```
 	* Def.:	Fraction of extra late (hydrophobic) eluters		
 	* Ex.:	set metric for replicates
-*	C-7
+*	C-7A
 	* ```Interval	Acquisition range RT```
 	* Def.:		What is the lowest and the highest sampled RT set to in the machine settings?
 	* Ex.:	"30,3000"
+*	C-7B
+	* ```Interval	RT-Duration```
+	* Def.:		What is the highest scan time observed minus the lowest scan time observed?
+	* Ex.:	"61,2994"
 *	C-8A
 	* ```total ion current chromatogram	Intensity collection```
 	* Def.:		the chromatogram in total (already part of mzML?)
 	* Ex.:	![root](exampleplots/tic.png?raw=true)
 *	C-8B
 	* ```area under total ion current chromatogram	Total intensity```
-	* Def.:	TIC		
+	* Def.:	TIC AUC		
 	* Ex.:	![root](exampleplots/auctic.png?raw=true)
 *	C-8C
 	* ```area under total ion current chromatogram quartiles	Intensity Q1-Q4```
 	* Def.:	TIC
 	* Ex.:	![root](exampleplots/auctic.png?raw=true)
 *	C-8D
-	* ```Interval	RT-Duration```
-	* Def.:		What is the highest scan time observed minus the lowest scan time observed?
-	* Ex.:	qcML
-*	C-8E
 	* ```TIC quartile in relation to RT duration	RT-TIC Q1-Q4```
 	* Def.:		The interval when the first, .., last percentile of TIC accumulates divided by RT-Duration
 	* Ex.:	![root](exampleplots/rt_events.png?raw=true)
@@ -104,11 +104,11 @@ The more elaborate collection is found in the spreadsheet with the same name ([l
 *	IS-1A
 	* ```MS1 during middle (and early) peptide retention period	MS1 jumps >10×```
 	* Def.:	Flags ESI instability	Number of times where MS1 signal greatly decreased between adjacent scans more than 10-fold (electrospray instability)
-	* Ex.:	?TODO RIC
+	* Ex.:	TODO RIC ? how to define early and middle RT period
 *	IS-1B
 	* ```MS1 during middle (and early) peptide retention period	MS1 falls >10×```
 	* Def.:	Flags ESI instability	Number of times where MS1 signal greatly increased between adjacent scans more than 10-fold (electrospray instability)
-	* Ex.:	?TODO RIC
+	* Ex.:	TODO RIC ? how to define early and middle RT period
 *	IS-2
 	* ```Precursor m/z for IDs	Median```
 	* Def.:	Higher median m/z can correlate with inefficient or partial ionization	Median m/z value for all identified peptides (unique ions)
@@ -138,8 +138,7 @@ The more elaborate collection is found in the spreadsheet with the same name ([l
 	* Def.:		What fraction of MS/MS precursors is triply charged?
 	* Ex.:	![root](exampleplots/charge_histogram.png?raw=true)
 *	IS-3D4
-	* ```Charge 4 count	MS2-PrecZ-4
-	* ```
+	* ```Charge 4 count	MS2-PrecZ-4```
 	* Def.:		What fraction of MS/MS precursors is quadruply charged?
 	* Ex.:	![root](exampleplots/charge_histogram.png?raw=true)
 *	IS-3D5
@@ -185,10 +184,14 @@ The more elaborate collection is found in the spreadsheet with the same name ([l
 	* ```MS1 max/MS1 sampled abundance ratio IDs	Med bottom 1/2```
 	* Def.:	Estimates position on peak where sampled for least abundant 50% of peptides	Ratio of MS1 maximum to MS1 value at sampling for bottom 50% of peptides by MS1 maximum intensity (1 = sampled at peak maxima)
 	* Ex.:	?
-*	DS4
+*	DS-4
 	* ```Interval	Acquisition range m/z```
 	* Def.:		What is the lowest and the highest sampled m/z set to in the machine settings?
 	* Ex.:	"300,1800"
+* DS-5
+	* ```Top N spacing```
+	* Def.: How often the top nth abundant ion was sampled in an Top N acquisition scheme
+	* Ex.: ![root](exampleplots/topn.png?raw=true)
 
 ##Category: MS1
 *	MS1-1
@@ -212,11 +215,11 @@ The more elaborate collection is found in the spreadsheet with the same name ([l
 	* Def.:	Estimates the median MS1 signal for peptides	Median maximum MS1 value for identified peptides
 	* Ex.:	?Features
 *	MS1-4A
-	* ```MS1 intensity variation for peptides	Within series```
+	* ```MS1 intensity variation for peptides.	Within series```
 	* Def.:	Used to monitor relative intensity differences with a series	Average of between series intensity variations for identified peptides
 	* Ex.:	?Features
 *	MS1-4B
-	* ```MS1 intensity variation for peptides	Between/in```
+	* ```MS1 intensity variation for peptides.	Between/in series```
 	* Def.:	Used to monitor relative intensity differences with a series compared with between series	Ratio of average intensity variation between series to average intensity variation within a series (low values indicate similarity between series)
 	* Ex.:	?Features
 *	MS1-5A
@@ -235,6 +238,10 @@ The more elaborate collection is found in the spreadsheet with the same name ([l
 	* ```Precursor m/z - Peptide ion m/z	ppm interQ```
 	* Def.:	Measures the distribution of the real accuracy measurements	Interquartile distance in ppm of the precursor errors
 	* Ex.:	![root](exampleplots/dppm_percentile.png?raw=true)
+*	MS1-5E
+	* ```Mass error observed over time```
+	* Def.:	Mass error observed over retention time
+	* Ex.:	![root](exampleplots/dppm_time.png?raw=true)
 *	MS1-6A
 	* ```number of MS events in run	MS1-Count```
 	* Def.:		How many MS scans were collected?
@@ -287,8 +294,8 @@ The more elaborate collection is found in the spreadsheet with the same name ([l
 	* Ex.:	![root](exampleplots/rt_events.png?raw=true)
 *	MS2-5A
 	* ```number of MS/MS events in run	```
-	* Def.:		How many MS/MS scans were collected?
-	* Ex.:	qcML
+	* Def.:		How many MS/MS scans were collected? - see DS-2B
+	* Ex.:	"4566"
 *	MS2-5B
 	* ```number of MS/MS events per minute	MS2-Count```
 	* Def.:			
@@ -335,6 +342,10 @@ The more elaborate collection is found in the spreadsheet with the same name ([l
 	* ```enzyme contamination	```
 	* Def.:	indicates the presence of a contaminant enzyme in the sample.	The ratio of the sum of chymotryptic and tryptic sequences by the number of tryptic sequences.
 	* Ex.:	"1.003"
+*	P-3D
+	* ```Peptide lengths	```
+	* Def.:	Records the length distribution of identified peptide lengths.
+	* Ex.:	![root](exampleplots/lengthdistro.png?raw=true)
 *	P-4A
 	* ```number of PSM count```
 	* Def.:			
@@ -353,7 +364,7 @@ The more elaborate collection is found in the spreadsheet with the same name ([l
 	* Ex.:	"6005"
 *	P-5C
 	* ```number of uniquely identified proteins	uniquely id protein count```
-	* Def.:			
+	* Def.:	The number of proteins identified by peptide matching just this protein.
 	* Ex.:	"78"
 *	P-6
 	* ```Mass error histogram	deltaM Q1-Q4```
@@ -364,7 +375,7 @@ The more elaborate collection is found in the spreadsheet with the same name ([l
 	* Def.:		could be calculated for applicable reference run or many spike-in proteins and many theo. ratios, e.g. diff_theo_vs_meas_ratio_of_spike_in_BSA_2.5
 	* Ex.:	?
 *	P-7B
-	* ```Reference comparison Mean Intensities	Mean Intensities```
+	* ```Reference comparison Mean Intensities```
 	* Def.:		could be calculated for applicable reference run or many spike-in proteins and many theo. ratios, e.g. diff_theo_vs_meas_ratio_of_spike_in_BSA_2.5
 	* Ex.:	?
 *	P-8A
@@ -375,6 +386,14 @@ The more elaborate collection is found in the spreadsheet with the same name ([l
 	* ```id coverage```
 	* Def.:		The coverages of distinct sequences for a respective engine.
 	* Ex.:	?
+* P-9
+	* ```Hydropathy index of identified peptides over retention time ```
+	* Def.: Hydropathy index of identified peptides over retention time
+	* Ex.:  ![root](exampleplots/gravy.png?raw=true)
+* P-10
+ 	* ```Fractional mass plot```
+ 	* Def.: The neutral mass [M] of identified peptides plotted by fractional over nominal mass against the theoretically possible peptides by the given database or organism
+ 	* Ex.: ![root](exampleplots/fracmass.png?raw=true)
 
 ## Category: Feature Extraction
 *	F-1A
@@ -386,15 +405,23 @@ The more elaborate collection is found in the spreadsheet with the same name ([l
 	* Def.:		Number of detected features with attached identifications.
 	* Ex.:	"5567"
 	* ![root](exampleplots/mapped_features.png?raw=true)
+*	F-1C
+	* ```Features observed over time```
+	* Def.:		Number of detected features over the retention time interval.
+	* Ex.:	![root](exampleplots/feat_time.png?raw=true)
 *	F-2A
+	* ```FWHM of observed features```
+	* Def.:		The full width at half maximum values of the observed features
+	* Ex.:	![root](exampleplots/feat_width.png?raw=true)
+*	F-2B
 	* ```Fraction of precursors generating top and bottom half peak width	XIC-WideFrac```
 	* Def.:		What fraction of precursor ions account for the top half of all peak width?
 	* Ex.:	?
-*	F-2B
+*	F-2C
 	* ```FWHM Quartiles	XIC-FWHM Q1-Q4```
 	* Def.:		What is the first, .., last percentile of peak widths for the wide XICs?
 	* Ex.:	![root](exampleplots/feat_width.png?raw=true)
-*	F-2C
+*	F-2D
 	* ```Feature height quartiles 2-4 (in relation to Q1)	XIC-Height Q2-Q4```
 	* Def.:		The log ratio for first, .., third percentile of wide XIC heights over first percentile of heights.
 	* Ex.:	?
