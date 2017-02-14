@@ -108,7 +108,7 @@ The more elaborate collection is found in the spreadsheet with the same name ([l
 *	IS-1B
 	* ```MS1 during middle (and early) peptide retention period	MS1 falls >10×```
 	* Def.:	Flags ESI instability	Number of times where MS1 signal greatly increased between adjacent scans more than 10-fold (electrospray instability)
-	* Ex.:	TODO RIC ? how to define early and middle RT period
+	* Ex.:	TODO RIC
 *	IS-2
 	* ```Precursor m/z for IDs	Median```
 	* Def.:	Higher median m/z can correlate with inefficient or partial ionization	Median m/z value for all identified peptides (unique ions)
@@ -200,12 +200,12 @@ The more elaborate collection is found in the spreadsheet with the same name ([l
 	* Ex.:	![root](exampleplots/injectiontimes.png?raw=true)
 *	MS1-2A
 	* ```MS1 during middle (and early) peptide retention period	S/N median```
-	* Def.:	Higher MS1 S/N may correlate with higher signal discrimination	Median signal-to-noise value (ratio of maximum to median peak height) for MS1 spectra up to and including C-2A
-	* Ex.:	?TODO RIC
+	* Def.:	Higher MS1 S/N may correlate with higher signal discrimination	Median signal-to-noise value (ratio of maximum to median peak height) for MS1 spectra up to and including C-2A (needs to be clarified, also S/N = max/med vs. peak_count_normalisation(max/med))
+	* Ex.:	![root](exampleplots/ms1sn.png?raw=true)
 *	MS1-2B
 	* ```MS1 during middle (and early) peptide retention period	TIC median```
 	* Def.:	Estimates the total absolute signal for peptides (may vary significantly between instruments)	Median TIC value for identified peptides over same time period as used for MS1-2A
-	* Ex.:	?TODO RIC
+	* Ex.:	?
 *	MS1-3A
 	* ```MS1 ID max	95/5 percentile```
 	* Def.:	Estimates the dynamic range of the peptide signals	Ratio of 95th over 5th percentile MS1 maximum intensity values for identified peptides (approximates dynamic range of signal)
@@ -271,11 +271,11 @@ The more elaborate collection is found in the spreadsheet with the same name ([l
 *	MS2-2
 	* ```MS2 ID S/N	Median```
 	* Def.:	Higher S/N correlates with increased frequency of peptide identification	Median S/N (ratio of maximum to median peak height) for identified MS2 spectra
-	* Ex.:	OpenMS spectrum annotator
+	* Ex.:	![root](exampleplots/ms2sn.png?raw=true)
 *	MS2-3
 	* ```MS2 ID peaks	Median```
 	* Def.:	Higher peak counts can correlate with more signal	Median number of peaks in an MS2 scan
-	* Ex.:	OpenMS spectrum annotator
+	* Ex.:	![root](exampleplots/ms2peakcount.png?raw=true)
 *	MS2-4A
 	* ```Fraction of MS2 identified at different MS1 max quartiles	ID fract Q1```
 	* Def.:	Higher fractions of identified MS2 spectra indicate efficiency of detection and sampling	Fraction of total MS2 scans identified in the first quartile of peptides sorted by MS1 maximum intensity
