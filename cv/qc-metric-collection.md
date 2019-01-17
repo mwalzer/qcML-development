@@ -1,4 +1,4 @@
-#QC metric collection
+# QC metric collection
 a collection of metrics, possible value and plot representations, definitions, and rationale.
 
 I've collected QC metrics from various sources, and adapted different modes of description on which the WG will have to decide which to use for formal definition/representation and embedding in our CV. In particular I adapted the category and code scheme from the NIST metrics as it might be helpful in keeping an overview, as there are already plenty and surely more to come. Moreover, the early metrics from qcML, and discussions from PSI spring meeting in Ghent.
@@ -8,7 +8,7 @@ The more elaborate collection is found in the spreadsheet with the same name ([l
 **This** document is a summary with plots and definitions, as far as I had software available to calculate at least an example from a mzML file.
 
 
-##Category: Filebase
+## Category: Filebase
 * *R1-A*
 	* ```File name attribute	qcML```
 	* Def.: How was the MS run for this experiment labeled?
@@ -18,7 +18,7 @@ The more elaborate collection is found in the spreadsheet with the same name ([l
   * Def.: At what time did acquisition begin for this experiment?
   * Ex.: "2010-02-22"
 
-##Category: Chromatography
+## Category: Chromatography
 *	C-1A
 	* ```Fraction of repeat peptide IDs with	-4 min ```
 	* Def.:	Estimates very early peak broadening	Fraction of all peptides identified at least 4 min earlier than max MS1 for ID
@@ -193,7 +193,7 @@ The more elaborate collection is found in the spreadsheet with the same name ([l
 	* Def.: How often the top nth abundant ion was sampled in an Top N acquisition scheme
 	* Ex.: ![root](exampleplots/topn.png?raw=true)
 
-##Category: MS1
+## Category: MS1
 *	MS1-1
 	* ```Ion injection times for IDs	MS1 median```
 	* Def.:	Lower times indicate an abundance of ions	MS1 ion injection time
