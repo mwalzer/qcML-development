@@ -2,9 +2,7 @@
 	"name": "MZQC Python Development container",
 	"dockerFile": "Dockerfile",
 	"context": "..",
-	"extensions": [
-		"ms-python.python"
-	],
+	"extensions": ["ms-python.python", "littlefoxteam.vscode-python-test-adapter"],
 	"settings": {
 		"python.pythonPath": "/usr/local/bin/python"
 	},

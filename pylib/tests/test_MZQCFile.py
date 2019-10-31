@@ -120,3 +120,15 @@ class TestDeserialisation:
     def test_MzQcFile(self):
         assert qc.JsonSerialisable.FromJson(qc.JsonSerialisable.ToJson(mzqc)) == mzqc        
         assert isinstance(qc.JsonSerialisable.FromJson(qc.JsonSerialisable.ToJson(mzqc)),qc.MzQcFile)
+
+    def test_MzQC_coherence(self):
+        static_list_typemap = {'runQualities': qc.RunQuality, 'setQualities': qc.SetQuality, 'controlledVocabularies': qc.ControlledVocabulary, 
+                'qualityMetrics': qc.QualityMetric, 'inputFiles': qc.InputFile, 'analysisSoftware': qc.AnalysisSoftware, 'fileProperties': qc.CvParameter}
+        static_singlet_typemap = {'fileFormat': qc.CvParameter, 'metadata': qc.MetaDataParameters}
+        
+        for k,v in vars(qc.JsonSerialisable.FromJson(qc.JsonSerialisable.ToJson(mzqc))).items():
+            if k in static_list_typemap:
+                for i in v:
+                    assert isinstance(i, static_list_typemap[k])
+            if k in static_singlet_typemap:
+                isinstance(v, static_list_typemap[k])

@@ -80,12 +80,17 @@ def rectify(obj):
     static_list_typemap = {'runQualities': RunQuality, 'setQualities': SetQuality, 'controlledVocabularies': ControlledVocabulary, 
             'qualityMetrics': QualityMetric, 'inputFiles': InputFile, 'analysisSoftware': AnalysisSoftware, 'fileProperties': CvParameter}
     static_singlet_typemap = {'fileFormat': CvParameter, 'metadata': MetaDataParameters}
+    
     if hasattr(obj, '__dict__'):
-        for k,v in obj.__dict__.items():
+        for k,v in vars(obj).items():
             if k in static_list_typemap.keys():
-                v = [rectify((static_list_typemap[k])(**i.__dict__ if hasattr(i, '__dict__') else i)) for i in v]
+                vars(obj)[k] = [rectify((static_list_typemap[k])(**i.__dict__ if hasattr(i, '__dict__') else i)) for i in v]
             elif k in static_singlet_typemap.keys():
-                k = rectify((static_singlet_typemap[k])(**v.__dict__ if hasattr(v, '__dict__') else v))
+                vars(obj)[k] = rectify((static_singlet_typemap[k])(**v.__dict__ if hasattr(v, '__dict__') else v))
+    elif isinstance(obj, dict):
+        for k,v in iter(obj.items()):
+            if k == 'mzQC':
+                obj[k] = rectify(v)
     return obj
 
 
