@@ -5,4 +5,4 @@ dependencies:
     - pronto
     - requests 
     - matplotlib
-    - git+'https://github.com/HUPO-PSI/mzQC@mzqc-pylib#egg=MZQC-0.0.1&subdirectory=pylib'
+    - git+https://github.com/HUPO-PSI/mzQC@mzqc-pylib#egg=MZQC-0.0.1&subdirectory=pylib
