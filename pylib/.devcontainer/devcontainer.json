@@ -6,6 +6,13 @@
 	"settings": {
 		"python.pythonPath": "/usr/local/bin/python"
 	},
+
+	// make the local development via setup.py available in the container
 	"postCreateCommand": "sudo pip install -e .",
-	"runArgs": ["-u", "vscode"]
+	"runArgs": ["-u", "vscode"],
+
+	// for the jupyter server
+	"forwardPorts": [8888]
+	// server needs to be started:
+	// jupyter notebook --port=8888 --ip=0.0.0.0 and the token URL connected to with VScode
 }
