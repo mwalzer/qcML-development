@@ -1,0 +1,7 @@
+dependencies:
+  - numpy
+  - pronto
+  - requests 
+  - matplotlib
+  - pip:
+    - git+'https://github.com/HUPO-PSI/mzQC@mzqc-pylib#egg=MZQC-0.0.1&subdirectory=pylib'
